@@ -1,6 +1,17 @@
 package src.conversor.modelos;
 
 public class Menu {
+
+    private int opcion = 7;
+
+    public int getOpcion() {
+        return opcion;
+    }
+
+    public void setOpcion(int opcion) {
+        this.opcion = opcion;
+    }
+
     public static void mostrarMenu() {
         System.out.println("""
                 Bienvenido/a al Conversor de Moneda.
@@ -17,4 +28,6 @@ public class Menu {
                 
                 """);
     }
+
+
 }
