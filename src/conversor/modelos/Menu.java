@@ -1,4 +1,5 @@
 package src.conversor.modelos;
+import java.util.Scanner;
 
 public class Menu {
 
@@ -8,7 +9,7 @@ public class Menu {
         return opcion;
     }
 
-    public void setOpcion(int opcion) {
+    private void setOpcion(int opcion) {
         this.opcion = opcion;
     }
 
@@ -16,7 +17,7 @@ public class Menu {
         System.out.println("""
                 Bienvenido/a al Conversor de Moneda.
                 
-                Elija una opción válida:
+                Las opciones de conversión son:
                 
                 1) Dólar -> Peso argentino
                 2) Peso argentino -> Dólar
@@ -29,5 +30,10 @@ public class Menu {
                 """);
     }
 
-
+    public void preguntarOpcion() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Ingrese una opción válida: ");
+        int opcion = scanner.nextInt();
+        setOpcion(opcion);
+    }
 }
