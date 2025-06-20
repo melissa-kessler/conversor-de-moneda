@@ -1,5 +1,11 @@
 package src.conversor.modelos;
 
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+
 public class Conversor {
 
     private String moneda_base;
@@ -53,7 +59,16 @@ public class Conversor {
     }
 
 
-    public void hacerConversion(int opcion, int valor) {
+    public void hacerConversion(int opcion, int valor) throws IOException, InterruptedException {
         setearMonedas(opcion);
+
+        String base = getMoneda_base();
+        String target = getMoneda_target();
+
+        String url = "https://v6.exchangerate-api.com/v6/efec8497a69ea9a65903843c/pair/"+base+"/"+target+"/"+valor;
+
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).build();
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
     }
 }
