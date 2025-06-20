@@ -6,22 +6,23 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
+
 public class Conversor {
 
     private String moneda_base;
     private String moneda_target;
 
-    public String getMoneda_base() {
+    private String getMoneda_base() {
         return moneda_base;
     }
-    public void setMoneda_base(String moneda_base) {
+    private void setMoneda_base(String moneda_base) {
         this.moneda_base = moneda_base;
     }
 
-    public String getMoneda_target() {
+    private String getMoneda_target() {
         return moneda_target;
     }
-    public void setMoneda_target(String moneda_target) {
+    private void setMoneda_target(String moneda_target) {
         this.moneda_target = moneda_target;
     }
 
@@ -70,5 +71,7 @@ public class Conversor {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+        System.out.println(response);
     }
 }
