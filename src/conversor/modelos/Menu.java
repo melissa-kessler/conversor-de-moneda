@@ -49,10 +49,20 @@ public class Menu {
 
 
     public void pedirOpcion(Scanner scanner) {
-        System.out.print("Ingrese una opción válida: ");
-        int respuesta = scanner.nextInt();
+        boolean isValid = false;
+        int respuesta = 0;
+        while (!isValid) {
+            System.out.print("Ingrese una opción válida: ");
+            respuesta = scanner.nextInt();
+            isValid = validarOpcion(respuesta);
+        }
         setOpcion(respuesta);
     }
+
+    public boolean validarOpcion(int opcion) {
+        return opcion >= 1 && opcion <= 7;
+    }
+
 
     public void pedirValor(Scanner scanner) {
         System.out.print("Ingrese el valor a convertir: ");
