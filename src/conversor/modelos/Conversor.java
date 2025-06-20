@@ -1,5 +1,8 @@
 package src.conversor.modelos;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -72,6 +75,15 @@ public class Conversor {
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        System.out.println(response.body());
+        String json = response.body();
+
+        // Parse the string into a JsonObject
+        JsonObject jsonObject = JsonParser.parseString(json).getAsJsonObject();
+
+        // Get specific value
+        int resultado = jsonObject.get("conversion_result").getAsInt();
+
+        // Print the value
+        System.out.println("Resultado: " + resultado);
     }
 }
