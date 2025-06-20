@@ -60,7 +60,11 @@ public class Menu {
     }
 
     public boolean validarOpcion(int opcion) {
-        return opcion >= 1 && opcion <= 7;
+        if (opcion == 7) {
+            System.out.println("¡Hasta pronto!");
+            System.exit(0);
+        }
+        return opcion >= 1 && opcion <= 6;
     }
 
 

@@ -57,7 +57,7 @@ public class Conversor {
                 setMoneda_target("USD");
                 break;
             default:
-                System.out.println("¡Hasta pronto!");
+                System.out.println("Opción no encontrada.");
                 System.exit(0);
         }
     }
