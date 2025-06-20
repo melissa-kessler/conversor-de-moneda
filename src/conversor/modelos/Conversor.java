@@ -20,7 +20,7 @@ public class Conversor {
     }
 
 
-    public void validarOpcion(int opcion) {
+    private void setearMonedas(int opcion) {
         switch (opcion) {
             case 1:
                 setMoneda_base("USD");
@@ -46,15 +46,14 @@ public class Conversor {
                 setMoneda_base("COP");
                 setMoneda_target("USD");
                 break;
-            case 7:
-                System.out.println("¡Hasta pronto!");
-                break;
             default:
-
+                System.out.println("¡Hasta pronto!");
+                System.exit(0);
         }
     }
 
-    public void hacerConversion(int opcion, int valor) {
 
+    public void hacerConversion(int opcion, int valor) {
+        setearMonedas(opcion);
     }
 }
