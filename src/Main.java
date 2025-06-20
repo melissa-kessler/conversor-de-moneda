@@ -1,7 +1,6 @@
 package src;
 import src.conversor.modelos.Conversor;
 import src.conversor.modelos.Menu;
-
 import java.io.IOException;
 
 public class Main {

@@ -1,4 +1,5 @@
 package src.conversor.modelos;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
@@ -53,8 +54,12 @@ public class Menu {
         int respuesta = 0;
         while (!isValid) {
             System.out.print("Ingrese una opción válida: ");
-            respuesta = scanner.nextInt();
-            isValid = validarOpcion(respuesta);
+            try {
+                respuesta = scanner.nextInt();
+                isValid = validarOpcion(respuesta);
+            } catch (InputMismatchException e) {
+                System.out.println(e.getMessage());;
+            }
         }
         setOpcion(respuesta);
     }
