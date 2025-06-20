@@ -4,6 +4,15 @@ import java.util.Scanner;
 public class Menu {
 
     private int opcion = 7;
+    private int valor = 1;
+
+    public int getValor() {
+        return valor;
+    }
+
+    private void setValor(int valor) {
+        this.valor = valor;
+    }
 
     public int getOpcion() {
         return opcion;
@@ -13,7 +22,8 @@ public class Menu {
         this.opcion = opcion;
     }
 
-    public static void mostrarMenu() {
+
+    public void showMenu() {
         System.out.println("""
                 Bienvenido/a al Conversor de Moneda.
                 
@@ -28,12 +38,26 @@ public class Menu {
                 7) Salir
                 
                 """);
+
+        Scanner scanner = new Scanner(System.in);
+
+        pedirOpcion(scanner);
+
+        pedirValor(scanner);
+
     }
 
-    public void preguntarOpcion() {
-        Scanner scanner = new Scanner(System.in);
+
+    public void pedirOpcion(Scanner scanner) {
         System.out.print("Ingrese una opción válida: ");
-        int opcion = scanner.nextInt();
-        setOpcion(opcion);
+        int respuesta = scanner.nextInt();
+        setOpcion(respuesta);
     }
+
+    public void pedirValor(Scanner scanner) {
+        System.out.print("Ingrese el valor a convertir: ");
+        int respuesta = scanner.nextInt();
+        setValor(respuesta);
+    }
+
 }
