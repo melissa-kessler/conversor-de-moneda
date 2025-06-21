@@ -3,7 +3,6 @@ package src.conversor.modelos;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
-import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -63,7 +62,7 @@ public class Conversor {
     }
 
 
-    public void hacerConversion(int opcion, int valor) {
+    public void hacerConversion(int opcion, float valor) {
         setearMonedas(opcion);
 
         String base = getMoneda_base();
@@ -92,7 +91,7 @@ public class Conversor {
 
         // Get specific value
         assert jsonObject != null;
-        int resultado = jsonObject.get("conversion_result").getAsInt();
+        float resultado = jsonObject.get("conversion_result").getAsFloat();
 
         // Print the value
         System.out.println("Resultado: " + resultado);

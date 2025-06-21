@@ -12,7 +12,7 @@ public class Main {
         menu.showMenu();
 
         int opcion = menu.getOpcion();
-        int valor = menu.getValor();
+        float valor = menu.getValor();
 
         conversor.hacerConversion(opcion, valor);
     }

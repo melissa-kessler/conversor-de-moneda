@@ -6,13 +6,13 @@ import java.util.Scanner;
 public class Menu {
 
     private int opcion = 7;
-    private int valor = 1;
+    private float valor = 1;
 
-    public int getValor() {
+    public float getValor() {
         return valor;
     }
 
-    private void setValor(int valor) {
+    private void setValor(float valor) {
         this.valor = valor;
     }
 
@@ -78,11 +78,11 @@ public class Menu {
 
     public void pedirValor(Scanner scanner) {
         boolean isValid = false;
-        int respuesta = 1;
+        float respuesta = 1;
         while (!isValid) {
             System.out.print("Ingrese el valor a convertir: ");
             try {
-                respuesta = scanner.nextInt();
+                respuesta = scanner.nextFloat();
                 isValid = true;
             } catch (InputMismatchException e) {
                 System.out.println("Valor inválido.");
