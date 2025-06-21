@@ -2,7 +2,7 @@ package src.conversor.modelos;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-
+import com.google.gson.JsonSyntaxException;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -63,7 +63,7 @@ public class Conversor {
     }
 
 
-    public void hacerConversion(int opcion, int valor) throws IOException, InterruptedException {
+    public void hacerConversion(int opcion, int valor) {
         setearMonedas(opcion);
 
         String base = getMoneda_base();
@@ -71,19 +71,31 @@ public class Conversor {
 
         String url = "https://v6.exchangerate-api.com/v6/efec8497a69ea9a65903843c/pair/"+base+"/"+target+"/"+valor;
 
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).build();
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        HttpResponse<String> response = null;
+        try (HttpClient client = HttpClient.newHttpClient()) {
+            HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).build();
+            response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (Exception e) {
+            System.out.println("Problemas con la solicitud.");;
+        }
 
+        assert response != null;
         String json = response.body();
 
         // Parse the string into a JsonObject
-        JsonObject jsonObject = JsonParser.parseString(json).getAsJsonObject();
+        JsonObject jsonObject = null;
+        try {
+            jsonObject = JsonParser.parseString(json).getAsJsonObject();
+        } catch (JsonSyntaxException e) {
+            System.out.println("Error obteniendo los datos.");
+        }
 
         // Get specific value
+        assert jsonObject != null;
         int resultado = jsonObject.get("conversion_result").getAsInt();
 
         // Print the value
         System.out.println("Resultado: " + resultado);
+
     }
 }

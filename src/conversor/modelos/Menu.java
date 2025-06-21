@@ -1,4 +1,5 @@
 package src.conversor.modelos;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -51,15 +52,17 @@ public class Menu {
 
     public void pedirOpcion(Scanner scanner) {
         boolean isValid = false;
-        int respuesta = 0;
+        int respuesta = 7;
         while (!isValid) {
             System.out.print("Ingrese una opción válida: ");
             try {
                 respuesta = scanner.nextInt();
                 isValid = validarOpcion(respuesta);
             } catch (InputMismatchException e) {
-                System.out.println(e.getMessage());;
+                System.out.println("Caracter inválido.");
+                scanner.nextLine();
             }
+
         }
         setOpcion(respuesta);
     }
@@ -74,8 +77,18 @@ public class Menu {
 
 
     public void pedirValor(Scanner scanner) {
-        System.out.print("Ingrese el valor a convertir: ");
-        int respuesta = scanner.nextInt();
+        boolean isValid = false;
+        int respuesta = 1;
+        while (!isValid) {
+            System.out.print("Ingrese el valor a convertir: ");
+            try {
+                respuesta = scanner.nextInt();
+                isValid = true;
+            } catch (InputMismatchException e) {
+                System.out.println("Valor inválido.");
+                scanner.nextLine();
+            }
+        }
         setValor(respuesta);
     }
 
