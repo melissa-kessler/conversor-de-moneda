@@ -94,7 +94,7 @@ public class Conversor {
         float resultado = jsonObject.get("conversion_result").getAsFloat();
 
         // Print the value
-        System.out.println("Resultado: " + resultado);
+        System.out.printf("Resultado: %.2f", resultado);
 
     }
 }
