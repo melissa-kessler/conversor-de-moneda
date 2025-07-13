@@ -75,7 +75,7 @@ public class Conversor {
             HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).build();
             response = client.send(request, HttpResponse.BodyHandlers.ofString());
         } catch (Exception e) {
-            System.out.println("Problemas con la solicitud.");;
+            System.out.println("Problemas con la solicitud.");
         }
 
         assert response != null;

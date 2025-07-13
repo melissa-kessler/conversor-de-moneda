@@ -1,10 +1,8 @@
 package src;
-import src.conversor.modelos.Conversor;
-import src.conversor.modelos.Menu;
-import java.io.IOException;
+import src.conversor.modelos.*;
 
 public class Main {
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static void main(String[] args) {
 
         Menu menu = new Menu();
         Conversor conversor = new Conversor();
